@@ -3,11 +3,19 @@
 // This must be included before many other Windows headers.
 #include <windows.h>
 
+#include <dawn/dawn_proc.h>
+#include <dawn_native/DawnNative.h>
 #include <flutter/method_channel.h>
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
 
 #include <memory>
+
+extern "C" {
+FLUTTER_PLUGIN_EXPORT void initWebGpu();
+}
+
+void initWebGpu() { dawnProcSetProcs(&dawn_native::GetProcs()); }
 
 namespace {
 

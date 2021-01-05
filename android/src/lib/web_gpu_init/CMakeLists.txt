@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-set(PROJECT_NAME "web_gpu_init")
+set(PROJECT_NAME "web_gpu_plugin")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} SHARED

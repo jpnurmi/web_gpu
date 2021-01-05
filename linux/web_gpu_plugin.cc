@@ -1,6 +1,14 @@
 #include "include/web_gpu/web_gpu_plugin.h"
 
+#include <dawn/dawn_proc.h>
+#include <dawn_native/DawnNative.h>
 #include <flutter_linux/flutter_linux.h>
+
+extern "C" {
+FLUTTER_PLUGIN_EXPORT __attribute__((used)) void initWebGpu();
+}
+
+void initWebGpu() { dawnProcSetProcs(&dawn_native::GetProcs()); }
 
 #define WEB_GPU_PLUGIN(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST((obj), web_gpu_plugin_get_type(), WebGpuPlugin))

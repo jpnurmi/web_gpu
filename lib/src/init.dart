@@ -6,9 +6,9 @@ typedef _c_initWebGpu = ffi.Void Function();
 typedef _dart_initWebGpu = void Function();
 
 bool initWebGpu() {
-  final lib = ffi.DynamicLibrary.open(fixupLibName('web_gpu_init'));
+  final exe = ffi.DynamicLibrary.open(fixupLibName('web_gpu_plugin'));
   final initFunc =
-      lib.lookupFunction<_c_initWebGpu, _dart_initWebGpu>('initWebGpu');
+      exe.lookupFunction<_c_initWebGpu, _dart_initWebGpu>('initWebGpu');
   if (initFunc == null) return false;
   initFunc();
   return true;
